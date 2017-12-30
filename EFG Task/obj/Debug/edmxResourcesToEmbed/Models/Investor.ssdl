@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ReservationModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="INVESTOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NAME" Type="varchar" MaxLength="100" />
+    <Property Name="MOBILE" Type="int" />
+  </EntityType>
+  <EntityType Name="SECTOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="INVESTOR" Type="int" />
+    <Property Name="NAME" Type="varchar" MaxLength="500" />
+    <Property Name="TIME" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_SECTOR_INVESTOR">
+    <End Role="INVESTOR" Type="Self.INVESTOR" Multiplicity="0..1" />
+    <End Role="SECTOR" Type="Self.SECTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INVESTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SECTOR">
+        <PropertyRef Name="INVESTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ReservationModel1StoreContainer">
+    <EntitySet Name="INVESTOR" EntityType="Self.INVESTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SECTOR" EntityType="Self.SECTOR" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_SECTOR_INVESTOR" Association="Self.FK_SECTOR_INVESTOR">
+      <End Role="INVESTOR" EntitySet="INVESTOR" />
+      <End Role="SECTOR" EntitySet="SECTOR" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

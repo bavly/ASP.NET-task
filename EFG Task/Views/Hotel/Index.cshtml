@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EFG_Task.Models.HOTEL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Hotel Reservation<br></h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME)
+            
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ROOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ROOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIME)
+        </td>
+        <td>
+            <a href="/Hotel/Edit/1">Edit</a> |
+            <a href="/Hotel/Details/1">Details</a> |
+            <a href="/Hotel/Delete/1" class=""></a>
+        </td>
+    </tr>
+}
+
+</table>

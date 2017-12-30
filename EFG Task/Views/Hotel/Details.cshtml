@@ -1,0 +1,42 @@
+﻿@model EFG_Task.Models.HOTEL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HOTEL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ROOM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ROOM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIME)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

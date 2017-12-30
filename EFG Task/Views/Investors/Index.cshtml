@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EFG_Task.Models.Investor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Investor<br></h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InvestorSector.interestedSector)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mobile)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvestorSector.interestedSector)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mobile)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idInvestor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idInvestor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idInvestor })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div style="padding:10px; border:1px solid ">
+    
+    <div> <a href="@Url.Action("Report", new {id= "PDF" })"> "Get Report PDF"</a> </div> 
+    <div> <a href="@Url.Action("Report", new {id= "Excel" })"> "Get Report Excel"</a> </div>
+    <div> <a href="@Url.Action("Report", new {id= "Word" })"> "Get Report Word"</a> </div>
+    <div> <a href="@Url.Action("Report", new {id= "Image" })"> "Get Report Image"</a> </div>
+
+</div>
